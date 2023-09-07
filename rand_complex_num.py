@@ -3,17 +3,10 @@ from ComplexNumber import ComplexNumber
 
 
 def rand_complex_num(real_lb, real_ub, im_lb, im_ub, amount=1):
+    random_reals = random.sample(range(real_lb, real_ub + 1), amount)
+    random_ims = random.sample(range(im_lb, im_ub + 1), amount)
+
     if amount == 1:
-        random_real = random.uniform(real_lb, real_ub)
-        random_im = random.uniform(im_lb, im_ub)
-
-        return ComplexNumber(random_real, random_im)
+        return ComplexNumber(random_reals[0], random_ims[0])
     else:
-        rand_list = []
-        for i in range(0, amount):
-            random_real = random.uniform(real_lb, real_ub)
-            random_im = random.uniform(im_lb, im_ub)
-
-            rand_list.append(ComplexNumber(random_real, random_im))
-
-        return rand_list
+        return [ComplexNumber(random_reals[i], random_ims[i]) for i in range(0, amount - 1)]
